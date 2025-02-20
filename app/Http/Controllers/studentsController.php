@@ -24,6 +24,7 @@ class StudentsController extends Controller
             'gender' => 'required',
         ]);
 
+        //students
         $add_new = new Students;
         $add_new->id = $request->id;
         $add_new->name = $request->name;
