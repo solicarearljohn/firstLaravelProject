@@ -25,8 +25,13 @@
                         <form action="/register" method="POST">
                             @csrf
                             <div class="mb-3">
+<<<<<<< HEAD
                                 <label for="username" class="form-label">Username</label>
                                 <input name="username" type="text" class="form-control" id="username" placeholder="Enter your username" required>
+=======
+                                <label for="name" class="form-label">Name</label>
+                                <input name="name" type="text" class="form-control" id="name" placeholder="Enter your name" required>
+>>>>>>> e6500628de6978f60b323bc47e7237f454b55d0c
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
