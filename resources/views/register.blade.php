@@ -25,8 +25,12 @@
                         <form action="/register" method="POST">
                             @csrf
                             <div class="mb-3">
-                                <label for="name" class="form-label">Name</label>
-                                <input name="name" type="text" class="form-control" id="name" placeholder="Enter your name" required>
+
+
+                                <label for="username" class="form-label">Username</label>
+                                <input name="username" type="text" class="form-control" id="username" placeholder="Enter your username" required>
+
+
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>

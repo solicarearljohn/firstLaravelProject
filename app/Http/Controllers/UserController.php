@@ -14,7 +14,7 @@ class UserController extends Controller
             'loginpassword' => 'required'
         ]);
 
-        if (auth()->attempt(['name' => $incomingFields['loginname'], 'password' =>$incomingFields['loginpassword'] ])) {
+        if (auth()->attempt(['username' => $incomingFields['loginname'], 'password' =>$incomingFields['loginpassword'] ])) {
             $request->session()->regenerate();
             return redirect('/');
         }
@@ -28,7 +28,7 @@ class UserController extends Controller
 
     public function register(Request $request) {
         $incomingFields = $request->validate([
-            'name' => ['required', Rule::unique('users', 'name')],
+            'username' => ['required', Rule::unique('users', 'username')],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => ['required', 'max:10'],
         ]);
