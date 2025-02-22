@@ -23,7 +23,7 @@
                         <form action="/login" method="POST">
                             @csrf
                             <div class="mb-3">
-                                <label for="loginname" class="form-label">Name</label>
+                                <label for="loginname" class="form-label">Username</label>
                                 <input name="loginname" type="text" class="form-control" id="loginname" placeholder="Please enter">
                             </div>
                             <div class="mb-3">

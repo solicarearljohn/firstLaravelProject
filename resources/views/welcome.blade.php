@@ -27,7 +27,7 @@
             <div class="col-12 mt-4">
                 <!-- Welcome Alert -->
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Hi, {{ auth()->user()->name }}!</strong> Welcome to the homepage, feel free to explore!
+                    <strong>Hi, {{ auth()->user()->username }}!</strong> Welcome to the homepage, feel free to explore!
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             </div>
