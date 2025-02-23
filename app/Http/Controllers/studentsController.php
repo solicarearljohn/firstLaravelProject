@@ -13,7 +13,7 @@ class StudentsController extends Controller
         $students = Students::all();
         $users = User::all();
 
-        return view('welcome', compact('students', 'users'));
+        return view('dashboard', compact('students', 'users'));
     }
 
     //function addNewStudent
