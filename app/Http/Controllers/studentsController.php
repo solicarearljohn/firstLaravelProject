@@ -10,7 +10,7 @@ class StudentsController extends Controller
 {
     public function myView()
     {
-        $students = Students::all();
+        $students = Students::latest()->get();
         $users = User::all();
 
         return view('dashboard', compact('students', 'users'));
@@ -43,5 +43,13 @@ class StudentsController extends Controller
 
         return redirect('/')->with('success', 'Student deleted successfully.');
     
+    }
+
+
+    public function index(Request $request)
+    {
+        //$students = Students::all(); // Retrieve all students
+        $students = Students::latest()->get(); // Paginate with 5 students per page
+        return view('dashboard', compact('students')); // Return the dashboard view with students data
     }
 }
