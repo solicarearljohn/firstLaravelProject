@@ -32,8 +32,15 @@ class StudentsController extends Controller
         $add_new->gender = $request->gender;
         $add_new->save();
 
-
-
         return back()->with('success', 'Student added successfully');
+    }
+
+    public function destroy($id)
+    {
+        $student = Students::findOrFail($id);
+        $student->delete();
+
+        return redirect('/')->with('success', 'Student deleted successfully.');
+    
     }
 }

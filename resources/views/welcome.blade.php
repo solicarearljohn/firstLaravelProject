@@ -9,9 +9,8 @@
     <!-- Include Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <!--user icon-->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
+    <!--user icon-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -23,36 +22,45 @@
                     <!-- Check if the user is authenticated -->
                     @auth
                     <i class="fas fa-user"></i>&nbsp;{{ auth()->user()->username }}&nbsp;&nbsp;
-                   @endauth
-                    <button class="btn btn-danger">Log Out</button> 
+                    @endauth
+                    <button class="btn btn-danger">Log Out</button>
+                  
                 </form>
             </div>
         </div>
         <br>
 
-
-
-<div>
-    <table class="table table-hover">
-        <thead class="table-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Age</th>
-                <th scope="col">Gender</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($students as $std)
-            <tr>
-                <th scope="row">{{ $std -> id }}</th>
-                <td>{{ $std -> name }}</td>
-                <td>{{ $std -> age }}</td>
-                <td>{{ $std -> gender }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+    
+    <div>
+        <table class="table table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Action</th> <!-- New column for actions -->
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($students as $std)
+                <tr>
+                    <th scope="row">{{ $std -> id }}</th>
+                    <td>{{ $std -> name }}</td>
+                    <td>{{ $std -> age }}</td>
+                    <td>{{ $std -> gender }}</td>
+                    <td>
+                        <!-- Delete Button -->
+                        <form action="{{ route('students.destroy', $std->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
 
     <!--
     <span class="alert alert-success">
@@ -133,7 +141,7 @@
     
     </div>
 
-
+    
 
 </body>
 </html>
