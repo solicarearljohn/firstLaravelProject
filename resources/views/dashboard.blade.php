@@ -104,7 +104,7 @@
                         @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" placeholder="Enter name">
+                            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" placeholder="Enter name"  pattern="[A-Za-z\s\.]+" title="Name should only contain letters and spaces"  required>
                             @error('name')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
