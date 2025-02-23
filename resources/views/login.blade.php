@@ -20,7 +20,7 @@
                         <h2 class="card-title text-center mb-4">Login</h2>
 
 
-                        <!-- Display the error message INvalid log in credentials -->
+                        <!-- Display the error message if there's any -->
                         @if ($errors->has('login'))
                             <div class="alert alert-danger">
                                 {{ $errors->first('login') }}
