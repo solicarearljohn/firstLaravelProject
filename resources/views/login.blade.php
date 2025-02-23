@@ -19,12 +19,20 @@
                     <div class="card-body">
                         <h2 class="card-title text-center mb-4">Login</h2>
 
+
+                        <!-- Display the error message INvalid log in credentials -->
+                        @if ($errors->has('login'))
+                            <div class="alert alert-danger">
+                                {{ $errors->first('login') }}
+                            </div>
+                        @endif
+                        
                         <!-- Login Form -->
                         <form action="/login" method="POST">
                             @csrf
                             <div class="mb-3">
                                 <label for="loginname" class="form-label">Username</label>
-                                <input name="loginname" type="text" class="form-control" id="loginname" placeholder="Please enter">
+                                <input name="loginname" type="text" class="form-control" id="loginname" placeholder="Please enter your username">
                             </div>
                             <div class="mb-3">
                                 <label for="loginpassword" class="form-label">Password</label>
