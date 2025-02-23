@@ -46,7 +46,7 @@ Route::post('/add-new', [StudentsController::class, 'addNewStudent'])->name('std
 
 });
 
-// Route::get('/', [StudentsController::class, 'myView'])->name('std.myView');
+Route::get('/', [StudentsController::class, 'myView'])->name('std.myView');
 
 
 // Example: Public view for home page (no authentication needed)
