@@ -16,6 +16,7 @@ class StudentsController extends Controller
         return view('welcome', compact('students', 'users'));
     }
 
+    //function addNewStudent
     public function addNewStudent(Request $request)
     {
         $request->validate([
