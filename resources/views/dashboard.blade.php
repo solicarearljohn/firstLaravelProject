@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laravel Activtiy</title>
+    <title>Laravel Activity</title>
     <!-- Include Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -125,7 +125,7 @@
                 <div class="modal fade" id="addNewModal" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <div class="modal-header">
+                                    <div class="modal-header" style="background-color: #007bff; color: white;">   
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Please enter your information!</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
@@ -133,21 +133,21 @@
                                     <form method="post" action="{{ route('std.addNewStudent') }}">
                                         @csrf
                                         <div class="mb-3">
-                                            <label for="name" class="form-label">Name</label>
+                                            <label for="name" class="form-label"><strong>Name</strong></label>
                                             <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" placeholder="Enter name"  pattern="[A-Za-z\s]+" title="Name should only contain letters and spaces"  required>
                                             @error('name')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="mb-3">
-                                            <label for="age" class="form-label">Age</label>
+                                            <label for="age" class="form-label"><strong>Age</strong></label>
                                             <input type="number" class="form-control" id="age" name="age" value="{{ old('age') }}" placeholder="Enter age" min="1" max="120">
                                             @error('age')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="mb-3">
-                                            <label for="gender" class="form-label">Gender</label>
+                                            <label for="gender" class="form-label"><strong>Gender</strong></label>
                                             <select class="form-control" id="gender" name="gender">
                                                 <option value="" disabled selected>Select gender</option>
                                                 <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male</option>
@@ -158,7 +158,7 @@
                                             @enderror
                                         </div>                        
 
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button type="submit" class="btn btn-success">Save</button>
                                     </form>
                                 </div>
                             </div>
@@ -170,7 +170,7 @@
                 <div class="modal fade" id="editModal{{ $std->id }}" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header">
+                            <div class="modal-header" style="background-color: #007bff; color: white;">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Update Student Information</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
@@ -179,21 +179,21 @@
                                     @csrf
                                     @method('PUT')
                                     <div class="mb-3">
-                                        <label for="name" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" value="{{ $std->name }}" placeholder="Enter name" pattern="[A-Za-z\s]+" title="Name should only contain letters and spaces"  required>
+                                        <label for="name" class="form-label"><strong>Name</strong></label>
+                                        <input type="text" class="form-control" id="name" name="name" value="{{ $std->name }}" placeholder="Enter name" pattern="[A-Za-z\s\.\,]+" title="Name should only contain letters and spaces"  required>
                                         @error('name')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label for="age" class="form-label">Age</label>
+                                        <label for="age" class="form-label"><strong>Age</strong></label>
                                         <input type="number" class="form-control" id="age" name="age" value="{{ $std->age }}" placeholder="Enter age" min="1" max="120">
                                         @error('age')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label for="gender" class="form-label">Gender</label>
+                                        <label for="gender" class="form-label"><strong>Gender</strong></label>
                                         <select class="form-control" id="gender" name="gender">
                                             <option value="Male" {{ $std->gender == 'Male' ? 'selected' : '' }}>Male</option>
                                             <option value="Female" {{ $std->gender == 'Female' ? 'selected' : '' }}>Female</option>
