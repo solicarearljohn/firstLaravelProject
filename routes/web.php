@@ -8,9 +8,8 @@ use App\Http\Controllers\StudentsController;
 
 
 Route::get('/login', function () {
-    return view('login'); // Render the login page (login.blade.php)
-})->name('login'); // Add the name 'login' here
-
+    return view('login'); 
+})->name('login'); 
 
 Route::get('/register', function () {
     return view('register'); // Points to the register.blade.php view
