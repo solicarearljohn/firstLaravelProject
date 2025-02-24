@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-//this is my table students
+
 class Students extends Model
-{
+{   //Table Name
     protected $table = 'students';
+    //Fillable Attributes
     protected $fillable = ['name', 'age', 'gender'];
 }
