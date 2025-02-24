@@ -57,7 +57,8 @@
                     @if($students->count() > 0)  <!-- Check if there are results -->
                       @foreach($students as $std)
                         <tr>
-                            <th scope="row">{{ $std->id }}</th>  
+                           <!-- <th scope="row">{ $std->id }}</th> -->
+                           <th scope="row">{{ $students->firstItem() + $loop->index }}</th>  
                             <td>{{ $std->name }}</td>
                             <td>{{ $std->age }}</td>
                             <td>{{ $std->gender }}</td>
