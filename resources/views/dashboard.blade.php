@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laravel Activty</title>
+    <title>Laravel Activtiy</title>
     <!-- Include Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -46,7 +46,7 @@
                 <table class="table table-hover">
                     <thead class="table-dark">
                         <tr>
-                           <!-- <th scope="col">#</th>  -->
+                           <!-- <th scope="col">#</th>   -->
                             <th scope="col">Student's Name</th>
                             <th scope="col">Age</th>
                             <th scope="col">Gender</th>
@@ -57,7 +57,7 @@
                     @if($students->count() > 0)  <!-- Check if there are results -->
                       @foreach($students as $std)
                         <tr>
-                           <!-- <th scope="row">{ $std->id }}</th> -->
+                          <!--  <th scope="row">{ $std->id }}</th>  -->
                             <td>{{ $std->name }}</td>
                             <td>{{ $std->age }}</td>
                             <td>{{ $std->gender }}</td>
@@ -167,7 +167,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Student Information</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Student Information</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
