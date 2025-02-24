@@ -12,7 +12,7 @@ class StudentsController extends Controller
     public function myView()
     {
         
-      //  $students = Students::all();
+       // $students = Students::all();
        // $students = Students::latest()->paginate(5);
        $students = Students::paginate(5);
         $users = User::all();
@@ -26,7 +26,8 @@ class StudentsController extends Controller
         $search = $request->input('search'); // Get the search query from the request
 
         // Perform the search query
-        $students = Students::where('name', 'like', "%{$search}%")->paginate(5)->appends(['search' => $search]); // Preserve the search query in the pagination links
+      //  $students = Students::where('name', 'like', "%{$search}%")->appends(['search' => $search]); // Preserve the search query in the pagination links
+      $students = Students::where('name', 'like', "%{$search}%")->paginate(5)->appends(['search' => $search]); // Preserve the search query in the pagination links
 
         return view('dashboard', compact('students')); // Pass the search results to the view
     }
@@ -53,9 +54,10 @@ class StudentsController extends Controller
 
     public function index(Request $request)
     {
-        $students = Students::all(); // Retrieve all students
-        $students = Students::latest()->paginate(5); // Paginate with 5 students per page
-        return view('dashboard', compact('students')); // Return the dashboard view with students data
+       // $students = Students::all(); // Retrieve all students
+       // $students = Students::latest()->paginate(10); // Paginate with 5 students per page
+       $students = Students::paginate(5);  
+       return view('dashboard', compact('students')); // Return the dashboard view with students data
     }
 
 
