@@ -46,7 +46,7 @@
                 <table class="table table-hover">
                     <thead class="table-dark">
                         <tr>
-                           <!-- <th scope="col">#</th>   -->
+                            <th scope="col">#</th>   
                             <th scope="col">Student's Name</th>
                             <th scope="col">Age</th>
                             <th scope="col">Gender</th>
@@ -57,7 +57,7 @@
                     @if($students->count() > 0)  <!-- Check if there are results -->
                       @foreach($students as $std)
                         <tr>
-                          <!--  <th scope="row">{ $std->id }}</th>  -->
+                            <th scope="row">{{ $std->id }}</th>  
                             <td>{{ $std->name }}</td>
                             <td>{{ $std->age }}</td>
                             <td>{{ $std->gender }}</td>
