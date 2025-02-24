@@ -42,82 +42,85 @@
             <button class="btn btn-secondary" type="submit">Clear Search</button>
         </form>
         
-            <div>
-                <table class="table table-hover">
-                    <thead class="table-dark">
-                        <tr>
-                            <th scope="col">#</th>   
-                            <th scope="col">Student's Name</th>
-                            <th scope="col">Age</th>
-                            <th scope="col">Gender</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    @if($students->count() > 0)  <!-- Check if there are results -->
-                      @foreach($students as $std)
-                        <tr>
-                           <!-- <th scope="row">{ $std->id }}</th> -->
-                           <th scope="row">{{ $students->firstItem() + $loop->index }}</th>  
-                            <td>{{ $std->name }}</td>
-                            <td>{{ $std->age }}</td>
-                            <td>{{ $std->gender }}</td>
-                            <td>
-                                <!-- Edit Button -->
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editModal{{ $std->id }}">
-                                    Edit
-                                </button>
-                    
-                                <!-- Delete Button -->
-                                <form action="{{ route('students.destroy', $std->id) }}" method="POST" style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                        @else
-                            <tr>
-                                <td colspan="5" class="text-center">No records found</td>
-                            </tr>
-                        @endif
-                    </tbody>
-                    
-                </table>
-
-                <!-- Add Pagination Links Below the Table -->
-                <div class="d-flex justify-content-end">
-                    {{ $students->appends(['search' => request('search')])->links('pagination::bootstrap-5') }}
-                </div>
-
-            </div>
-        
-
-
-
-        <!-- Check if there's a success message -->
-        @if (session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-
-                <script>
-                    // Automatically close the alert after 4 seconds
-                    setTimeout(function() {
-                        var alert = document.querySelector('.alert');
-                        if (alert) {
-                            alert.classList.remove('show');
-                        }
-                    }, 4000);  // 4000 milliseconds = 4 seconds
-                </script>
-         @endif
-
-                <!-- Action btn for modal -->
+           
+    <div style="border: 1px solid #ebe9e9; border-radius: 8px; background-color:#fffcfc;; padding: 10px;">
+        <div>
+            <table class="table table-hover table-bordered" style="border-radius: 8px; background-color: #f8f9fa;">
+               <!-- Button to trigger modal -->
+            <div class="d-flex justify-content-end mb-3">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNewModal">
                     Add New Students
                 </button>
+            </div>
+            
+                    <!-- Check if there's a success message -->
+    @if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+            <script>
+                // Automatically close the alert after 4 seconds
+                setTimeout(function() {
+                    var alert = document.querySelector('.alert');
+                    if (alert) {
+                        alert.classList.remove('show');
+                    }
+                }, 5000);  // 5000 milliseconds = 4 seconds
+            </script>
+    @endif
+
+    <h4 class="text-left">Student's List</h4> <!-- Title above the table -->
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col" class="text-center">#</th>   
+                        <th scope="col" class="text-center">Student's Name</th>
+                        <th scope="col" class="text-center">Age</th>
+                        <th scope="col" class="text-center">Gender</th>
+                        <th scope="col" class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @if($students->count() > 0)  <!-- Check if there are results -->
+                  @foreach($students as $std)
+                    <tr>
+                       <!-- <th scope="row">{ $std->id }}</th> -->
+                       <th scope="row" class="text-center">{{ $students->firstItem() + $loop->index }}</th>  
+                        <td class="text-center">{{ $std->name }}</td>
+                        <td class="text-center">{{ $std->age }}</td>
+                        <td class="text-center">{{ $std->gender }}</td>
+                        <td>
+                    <div class="d-flex justify-content-center">
+                            <!-- Edit Button -->
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editModal{{ $std->id }}">
+                                Edit
+                            </button>
+                            &nbsp;
+                            <!-- Delete Button -->
+                            <form action="{{ route('students.destroy', $std->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                    </div>    
+                        </td>
+                    </tr>
+                    @endforeach
+                    @else
+                        <tr>
+                            <td colspan="5" class="text-center">No records found</td>
+                        </tr>
+                    @endif
+                </tbody>   
+        </table>
+    </div>   
+
+         <!-- Add Pagination Links Below the Table -->
+         <div class="d-flex justify-content-end">
+            {{ $students->appends(['search' => request('search')])->links('pagination::bootstrap-5') }}
+        </div>
+
+    </div>     
                     <!-- Modal component -->
                 <div class="modal fade" id="addNewModal" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog">
