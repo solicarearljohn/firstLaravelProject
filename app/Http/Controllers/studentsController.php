@@ -57,6 +57,7 @@ class StudentsController extends Controller
        // $students = Students::all(); // Retrieve all students
        // $students = Students::latest()->paginate(10); // Paginate with 5 students per page
        $students = Students::paginate(5);  
+       $totalStudents = Students::count();
        return view('dashboard', compact('students')); // Return the dashboard view with students data
     }
 
