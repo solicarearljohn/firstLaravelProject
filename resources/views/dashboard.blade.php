@@ -1,4 +1,8 @@
 <!-- resources/views/dashboard.blade.php -->
+@php
+    use App\Models\Students;
+@endphp
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,14 +35,16 @@
         </div>
         <br>
         
-        <form action="{{ route('students.search') }}" method="GET" class="mb-3">
+        <form action="{{ route('students.search') }}" method="GET" class="mb-2">
             <div class="input-group">
-                <input type="text" class="form-control me-3" style="max-width: 300px;" placeholder="Search Student's name" name="search">
+                <input type="text" class="form-control me-2" style="max-width: 220px;" placeholder="Search Student's name" name="search" value="{{ request('search') }}">
                 <button class="btn btn-primary" type="submit">Search</button>
             </div>
         </form>
+
         
-        <form action="{{ route('students.index') }}" method="GET" class="mb-3">
+        
+        <form action="{{ route('students.index') }}" method="GET" class="mb-2">
             <button class="btn btn-secondary" type="submit">Clear Search</button>
         </form>
         
@@ -70,7 +76,12 @@
             </script>
     @endif
 
-    <h4 class="text-left">Student's List</h4> <!-- Title above the table -->
+
+    <div class="d-flex justify-content-between align-items-center mb-1">
+        <h5 class="text-left">Student's List</h5> 
+       
+        <h5 class="text-right">Total Students: {{ students::count() }}</h5> <!-- Total Students across all pages -->
+    </div>
                 <thead class="table-dark">
                     <tr>
                         <th scope="col" class="text-center">#</th>   
@@ -134,7 +145,7 @@
                                         @csrf
                                         <div class="mb-3">
                                             <label for="name" class="form-label"><strong>Name</strong></label>
-                                            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" placeholder="Enter name"  pattern="[A-Za-z\s]+" title="Name should only contain letters and spaces"  required>
+                                            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" placeholder="Last Name, First Name M.I."  pattern="[A-Za-z\s\,\.]+" title="Name should only contain letters and spaces"  required>
                                             @error('name')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
