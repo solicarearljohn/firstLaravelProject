@@ -17,7 +17,7 @@ class StudentsController extends Controller
        $students = Students::paginate(5);
         $users = User::all();
 
-        return view('dashboard', compact('students', 'users'));
+        return view('welcome', compact('students', 'users'));
     }
 
     // Method to handle the search request
@@ -29,7 +29,7 @@ class StudentsController extends Controller
       //  $students = Students::where('name', 'like', "%{$search}%")->appends(['search' => $search]); // Preserve the search query in the pagination links
       $students = Students::where('name', 'like', "%{$search}%")->paginate(5)->appends(['search' => $search]); // Preserve the search query in the pagination links
 
-        return view('dashboard', compact('students')); // Pass the search results to the view
+        return view('welcome', compact('students')); // Pass the search results to the view
     }
 
 
@@ -58,7 +58,7 @@ class StudentsController extends Controller
        // $students = Students::latest()->paginate(10); // Paginate with 5 students per page
        $students = Students::paginate(5);  
        $totalStudents = Students::count();
-       return view('dashboard', compact('students')); // Return the dashboard view with students data
+       return view('welcome', compact('students')); // Return the dashboard view with students data
     }
 
 
