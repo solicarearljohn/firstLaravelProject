@@ -107,7 +107,7 @@
                                 Edit
                             </button>
                             &nbsp;
-                            <!-- Delete Button -->
+                           
                             <form action="{{ route('students.destroy', $std->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
