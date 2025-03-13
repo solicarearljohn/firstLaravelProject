@@ -16,10 +16,11 @@ class Authenticate
      * @param  string|null  $guard
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
+    // Redirect to login page if not authenticated
     public function handle(Request $request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->guest()) {
-            return redirect()->route('login');  // Redirect to login page if not authenticated
+            return redirect()->route('login');  
         }
 
         return $next($request);
