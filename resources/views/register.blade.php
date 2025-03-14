@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <h2 class="card-title text-center mb-4">Register</h2>
 
-                        <!-- Register Form -->
+                        <!-- This is a Register Form -->
                         <form action="/register" method="POST">
                             @csrf
                             <div class="mb-3">
