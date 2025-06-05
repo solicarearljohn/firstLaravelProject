@@ -92,17 +92,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                @if($students->count() > 0)  <!-- Check if there are results -->
+                @if($students->count() > 0)  
                   @foreach($students as $std)
                     <tr>
-                       <!-- <th scope="row">{ $std->id }}</th> -->
+                     
                        <th scope="row" class="text-center">{{ $students->firstItem() + $loop->index }}</th>  
                         <td class="text-center">{{ $std->name }}</td>
                         <td class="text-center">{{ $std->age }}</td>
                         <td class="text-center">{{ $std->gender }}</td>
                         <td>
                     <div class="d-flex justify-content-center">
-                            <!-- Edit Button -->
+                          
                             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editModal{{ $std->id }}">
                                 Edit
                             </button>
